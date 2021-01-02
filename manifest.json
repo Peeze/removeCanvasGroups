@@ -5,9 +5,17 @@
   "version": "0.1",
 
   "description": "Removes selected Canvas Groups from the sidebar.",
-
+  "homepage_url" : "https://github.com/Peeze/removeCanvasGroups",
   "icons": {
     "48": "icons/border-48.png"
+  },
+
+  "permissions": [
+    "storage"
+  ],
+
+  "options_ui" : {
+      "page" : "options/groupsInfo.html"
   },
 
   "browser_specific_settings": {

@@ -2,9 +2,6 @@
 LiClassName = "fOyUs_bGBk dxCCp_bGBk dxCCp_fLbg dxCCp_ycrn dxCCp_cfzP dxCCp_bCcs"; // List entries in group list
 AClassName = "fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN"; // Links to group pages
 
-// List of group names to be removed
-const removeGroups = [];
-
 function observeNavTray() {
     try {
         // Select the node that will be observed for mutations
@@ -40,6 +37,22 @@ function observeNavTray() {
         console.error(e.message);
     }
 };
+
+// List of group names to be removed
+var removeGroups = [];
+
+// If stored entries could not be restored
+function onError(error) {
+    console.error(error.message);
+}
+
+// Create "removeGroups" from stored entries
+function onGot(item) {
+    removeGroups = item.groups;
+}
+
+let getting = browser.storage.sync.get(undefined);
+getting.then(onGot, onError);
 
 var groupsButton = document.getElementById("global_nav_groups_link");
 groupsButton.onclick = observeNavTray;
