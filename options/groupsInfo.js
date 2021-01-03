@@ -55,18 +55,23 @@ function updateList() {
 
 // If stored entries could not be restored
 function onError(error) {
-    addGroupEntry(error.message, "");
+    console.error(error.message);
     addGroupEntry("", "lastInput");
 }
 
 // Create list from stored entries
 function onGot(item) {
-    // Add input for each group in list
-    for (groupName of item.groups) {
-        addGroupEntry(groupName);
+    try {
+        // Add input for each group in list
+        for (groupName of item.groups) {
+            addGroupEntry(groupName);
+        }
+    } catch {
+        console.error(error.message);
+    } finally {
+        // Add additional empty input
+        addGroupEntry("", "lastInput");
     }
-    // Add additional empty input
-    addGroupEntry("", "lastInput");
 }
 
 // Load saved group list
