@@ -19,7 +19,7 @@ function addGroupEntry(groupName, groupId) {
     groupInput.setAttribute("type", "text");
     groupInput.setAttribute("value", groupName);
     groupInput.setAttribute("id", groupId);
-    groupInput.onblur = updateList;
+    groupInput.onchange = updateList;
 
     // Append elements to document
     node.appendChild(groupInput);
@@ -64,7 +64,7 @@ function onGot(item) {
     try {
         // Add input for each group in list
         for (groupName of item.groups) {
-            addGroupEntry(groupName);
+            addGroupEntry(groupName, undefined);
         }
     } catch {
         console.error(error.message);
