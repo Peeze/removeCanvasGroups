@@ -9,3 +9,7 @@ Find [Remove Canvas Groups on GitHub](https://github.com/Peeze/removeCanvasGroup
 Package extenstion like [so](https://extensionworkshop.com/documentation/publish/package-your-extension/).
 Firefox prevents installation of unsigned extenstions. I do not distribute the
 signed package. To get it signed, follow [these instructions](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/#self-distribution).
+
+## Usage
+After installation, go to [Add-ons](about:addons) and enter the group names to
+be removed under the module preferences.
