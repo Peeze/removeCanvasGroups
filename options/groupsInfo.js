@@ -19,7 +19,12 @@ function addGroupEntry(groupName, groupId) {
     groupInput.setAttribute("type", "text");
     groupInput.setAttribute("value", groupName);
     groupInput.setAttribute("id", groupId);
-    groupInput.onchange = updateList;
+    groupInput.onblur = updateList;
+
+    // Special effects for lastInput
+    if (groupId == "lastInput") {
+        groupInput.oninput = pushLastInput;
+    }
 
     // Append elements to document
     node.appendChild(groupInput);
@@ -51,6 +56,16 @@ function updateList() {
         }
     }
     saveOptions(groups);
+}
+
+// Add new empty lastInput when current lastInput is typed in
+function pushLastInput() {
+    // Find and un-ID old lastInput
+    lastInput = document.getElementById("lastInput");
+    lastInput.id = undefined;
+    lastInput.oninput = null;
+
+    addGroupEntry("", "lastInput");
 }
 
 // If stored entries could not be restored
